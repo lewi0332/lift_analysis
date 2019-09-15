@@ -150,9 +150,9 @@ print(f".....Control Cohort: {control_email_conversion:.2%}")
 print(f"This created a {email_lift:.2%} lift in conversion")
 
 
-'''Revenue attributed to emails'''
-
-'''First remove all values named "missing" and less than 0 on both lists'''
+'''Revenue attributed to emails
+-First remove all values named "missing" and less than 0 on both lists
+'''
 bc_rev = bc.loc[bc.total != 'MISSING'].copy()
 control_rev = control.loc[control.total != 'MISSING'].copy()
 bc_rev['total'] = bc_rev['total'].astype(float)

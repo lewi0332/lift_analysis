@@ -1,0 +1,28 @@
+
+Purchase Conversion rate
+.....BC Cohort: 36.95%
+.....Control Cohort: 60.70%
+This created a -39.12% lift in conversion
+
+
+Customer Conversion rate
+.....BC Cohort: 1.94%
+.....Control Cohort: 2.80%
+This created a -30.97% lift in conversion
+
+
+Email Conversion rate
+.....BC Cohort: 2.79%
+.....Control Cohort: 4.39%
+This created a -36.27% lift in conversion
+
+
+Attributed revenue per email.
+
+.....BC Cohort: $148.78
+.....Control Cohort: $158.94
+This created a -6.39% lift in conversion
+
+However, here are 2477 purchase totals labeled 'MISSING' 
+or less than 0 in the BC cohort and there are 151 purchase 
+totals labeled 'MISSING' or less than 0 in the Control cohort
