@@ -1,3 +1,4 @@
+5 days  = 
 
 Purchase Conversion rate
 .....BC Cohort: 36.95%
@@ -26,3 +27,32 @@ This created a -6.39% lift in conversion
 However, here are 2477 purchase totals labeled 'MISSING' 
 or less than 0 in the BC cohort and there are 151 purchase 
 totals labeled 'MISSING' or less than 0 in the Control cohort
+
+
+1 day = 
+Purchase Conversion rate
+.....BC Cohort: 10.43%
+.....Control Cohort: 31.75%
+This created a -67.16% lift in conversion
+
+
+Customer Conversion rate
+.....BC Cohort: 0.66%
+.....Control Cohort: 1.61%
+This created a -58.94% lift in conversion
+
+
+Email Conversion rate
+.....BC Cohort: 0.79%
+.....Control Cohort: 2.29%
+This created a -65.62% lift in conversion
+
+
+Attributed revenue per email.
+
+.....BC Cohort: $144.52
+.....Control Cohort: $144.08
+This created a 0.30% lift in conversion
+
+However, here are 2477 purchase totals labeled 'MISSING' or less than 0 in the BC cohort and there are 151 purchase totals labeled 'MISSING' or less than 0 in the Control cohort
+
