@@ -97,7 +97,7 @@ def add_converted(emails, purchases):
         for _ in range(len(delivered_dates)):
             if test is False:
                 test = purchases.iloc[i]['event_date'] - \
-                    delivered_dates.iloc[_] <= datetime.timedelta(days=1) and \
+                    delivered_dates.iloc[_] <= datetime.timedelta(days=10) and \
                     purchases.iloc[i]['event_date'] - \
                     delivered_dates.iloc[_] > datetime.timedelta(days=0)
                 # Test to see if there is an email within 5 days before purchasing
@@ -130,7 +130,7 @@ def add_converted_rev(emails, purchases):
         for _ in range(len(delivered_dates)):
             if test is False:
                 test = delivered_dates.iloc[_] - \
-                    purchases.iloc[i]['event_date'] <= datetime.timedelta(days=1) and \
+                    purchases.iloc[i]['event_date'] <= datetime.timedelta(days=10) and \
                     delivered_dates.iloc[_] - \
                     purchases.iloc[i]['event_date'] > datetime.timedelta(
                         days=0)

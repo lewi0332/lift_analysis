@@ -40,12 +40,13 @@ Using pandas.to_datetime to clean event_date column
 """
 
 df.event_date = pd.to_datetime(df.event_date, format="%Y-%m-%d")
-df.event_date = df.event_date.dt.round("D")
+# df.event_date = df.event_date.dt.round("D")
 
 
 """Looking at one users journey"""
-one_user = df.loc[df.email == 5312915884212224].copy()
-
+user_one = df.loc[df.email == 5312915884212224].copy()
+user_two = df.loc[df.email == 5994933019213824].copy()
+user_three = df.loc[df.email == 5312915884212224].copy()
 
 '''Maybe one hot encode the event type?'''
 
@@ -76,7 +77,7 @@ control['converted'] = 0
 
 # not pretty. not fast.
 
-def add_converted(emails, purchases, type):
+def add_converted(emails, purchases):
     '''
     Dates were a challenge. This function inputs two lists and a cohort type
     Start with each purchased date and validate an email delivery date
@@ -109,9 +110,38 @@ add_converted(big_bc_list, bc)
 add_converted(big_control_list, control)
 
 
+def add_converted_rev(emails, purchases):
+    '''
+    Dates were a challenge. This function inputs two lists and a cohort type
+    Start with each purchased date and validate an email delivery date
+    is within 5 days.
+    It then appends the purchased list with a 1 to mark that this purchase was converted
+    from an email
+    '''
+
+    for i in range(len(purchases)):
+        print(i)
+        test = False  # reset test to false
+
+        delivered_dates = emails.event_date.loc[emails.email ==
+                                                purchases.email.iloc[i]]
+        # Gather all the email delivered dates from the person who purchased
+
+        for _ in range(len(delivered_dates)):
+            if test is False:
+                test = delivered_dates.iloc[_] - \
+                    purchases.iloc[i]['event_date'] <= datetime.timedelta(days=5) and \
+                    delivered_dates.iloc[_] - \
+                    purchases.iloc[i]['event_date'] > datetime.timedelta(
+                        days=0)
+                # Test to see if there is an email within 5 days before purchasing
+            else:
+                purchases['converted'].iloc[i] = 1
+
+
 '''Run the function in reverse to see email effectiveness'''
-add_converted(bc, big_bc_list)
-add_converted(control, big_control_list)
+add_converted_rev(bc, big_bc_list)
+add_converted_rev(control, big_control_list)
 
 
 '''Do two purchases by the same person count as being converted twice?'''
