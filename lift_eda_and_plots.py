@@ -87,7 +87,7 @@ def add_converted(emails, purchases):
     '''
 
     for i in range(len(purchases)):
-        print(i)
+        # print(i)
         test = False  # reset test to false
 
         delivered_dates = emails.event_date.loc[emails.email ==
@@ -112,36 +112,36 @@ add_converted(big_control_list, control)
 
 def add_converted_rev(emails, purchases):
     '''
-    Dates were a challenge. This function inputs two lists and a cohort type
-    Start with each purchased date and validate an email delivery date
+    Dates were a challenge. This function inputs two lists
+    Start with each email date and validate an purchase date
     is within 5 days.
-    It then appends the purchased list with a 1 to mark that this purchase was converted
+    It then appends the email list with a 1 to mark that this purchase was converted
     from an email
     '''
 
-    for i in range(len(purchases)):
-        print(i)
+    for i in range(len(emails)):
+        # print(i)
         test = False  # reset test to false
 
-        delivered_dates = emails.event_date.loc[emails.email ==
-                                                purchases.email.iloc[i]]
+        delivered_dates = purchases.event_date.loc[purchases.email ==
+                                                   emails.email.iloc[i]]
         # Gather all the email delivered dates from the person who purchased
 
         for _ in range(len(delivered_dates)):
             if test is False:
                 test = delivered_dates.iloc[_] - \
-                    purchases.iloc[i]['event_date'] <= datetime.timedelta(days=5) and \
+                    emails.iloc[i]['event_date'] <= datetime.timedelta(days=5) and \
                     delivered_dates.iloc[_] - \
-                    purchases.iloc[i]['event_date'] > datetime.timedelta(
+                    emails.iloc[i]['event_date'] > datetime.timedelta(
                         days=0)
                 # Test to see if there is an email within 5 days before purchasing
             else:
-                purchases['converted'].iloc[i] = 1
+                emails['converted'].iloc[i] = 1
 
 
 '''Run the function in reverse to see email effectiveness'''
-add_converted_rev(bc, big_bc_list)
-add_converted_rev(control, big_control_list)
+add_converted_rev(big_bc_list, bc,)
+add_converted_rev(big_control_list, control,)
 
 
 '''Do two purchases by the same person count as being converted twice?'''
@@ -221,9 +221,9 @@ control_rev_per_email = control_totals.loc[control_totals.converted == 1].total.
 rev_lift = (bc_rev_per_email-control_rev_per_email)/control_rev_per_email
 
 print(
-    f".....BC Cohort: {bc_totals.loc[bc_totals.converted == 1].total.sum()} of {len(bc_totals.loc[bc_totals.converted == 1])} for ${bc_rev_per_email:.2f}")
+    f".....BC Cohort: ${bc_totals.loc[bc_totals.converted == 1].total.sum():.2f} of {len(bc_totals.loc[bc_totals.converted == 1])} for ${bc_rev_per_email:.2f}")
 print(
-    f".....Control Cohort: {control_totals.loc[control_totals.converted == 1].total.sum()} of {len(control_totals.loc[control_totals.converted == 1])} for ${control_rev_per_email: .2f}")
+    f".....Control Cohort: ${control_totals.loc[control_totals.converted == 1].total.sum():.2f} of {len(control_totals.loc[control_totals.converted == 1])} for ${control_rev_per_email: .2f}")
 print(f"This created a {rev_lift:.2%} lift in conversion")
 
 print(f"\nHowever, here are {bc_bad_totals} \
