@@ -222,8 +222,8 @@ rev_lift = (bc_rev_per_email-control_rev_per_email)/control_rev_per_email
 
 print(
     f".....BC Cohort: {bc_totals.loc[bc_totals.converted == 1].total.sum()} of {len(bc_totals.loc[bc_totals.converted == 1])} for ${bc_rev_per_email:.2f}")
-print(f".....Control Cohort: {control_totals.loc[control_totals.converted == 1].total.sum(
-)} of {len(control_totals.loc[control_totals.converted == 1])} for ${control_rev_per_email: .2f}")
+print(
+    f".....Control Cohort: {control_totals.loc[control_totals.converted == 1].total.sum()} of {len(control_totals.loc[control_totals.converted == 1])} for ${control_rev_per_email: .2f}")
 print(f"This created a {rev_lift:.2%} lift in conversion")
 
 print(f"\nHowever, here are {bc_bad_totals} \
