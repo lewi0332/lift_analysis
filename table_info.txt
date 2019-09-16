@@ -1,4 +1,31 @@
 5 days  = 
+Purchase Conversion rate
+.....BC Cohort: 14459 of 38298 for 37.75%
+.....Control Cohort: 1258 of 2066 for 60.89%
+This created a -38.00% lift in conversion
+
+
+Customer Conversion rate
+.....BC Cohort: 10060 of 506406 for 1.99%
+.....Control Cohort: 806 of 28596 for 2.82%
+This created a -29.52% lift in conversion
+
+
+Email Conversion rate
+.....BC Cohort: 7119 of 1062584 for 0.67%
+.....Control Cohort: 1384 of 106866 for 1.30%
+This created a -48.27% lift in conversion
+
+
+Attributed revenue per email.
+
+.....BC Cohort: 2021041.3039 of 13475 for $149.98
+.....Control Cohort: 183340.13 of 1153 for $ 159.01
+This created a -5.68% lift in conversion
+
+However, here are 2477 purchase totals labeled 'MISSING' 
+or less than 0 in the BC cohort and there are 151 
+purchase totals labeled 'MISSING' or less than 0 in the Control cohort
 
 
 
