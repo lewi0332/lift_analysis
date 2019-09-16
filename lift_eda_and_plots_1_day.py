@@ -97,7 +97,7 @@ def add_converted(emails, purchases):
         for _ in range(len(delivered_dates)):
             if test is False:
                 test = purchases.iloc[i]['event_date'] - \
-                    delivered_dates.iloc[_] <= datetime.timedelta(days=1) and \
+                    delivered_dates.iloc[_] <= datetime.timedelta(days=2) and \
                     purchases.iloc[i]['event_date'] - \
                     delivered_dates.iloc[_] > datetime.timedelta(days=0)
                 # Test to see if there is an email within 5 days before purchasing
@@ -130,7 +130,7 @@ def add_converted_rev(emails, purchases):
         for _ in range(len(delivered_dates)):
             if test is False:
                 test = delivered_dates.iloc[_] - \
-                    purchases.iloc[i]['event_date'] <= datetime.timedelta(days=1) and \
+                    purchases.iloc[i]['event_date'] <= datetime.timedelta(days=2) and \
                     delivered_dates.iloc[_] - \
                     purchases.iloc[i]['event_date'] > datetime.timedelta(
                         days=0)
@@ -173,8 +173,8 @@ control_cust_conversion = only_converted_purchases_control.email.nunique() / \
 customer_lift = (bc_cust_conversion-control_cust_conversion) / \
     control_cust_conversion
 print("\n\nCustomer Conversion rate")
-print(f".....BC Cohort: {bc_cust_conversion:.2%}")
-print(f".....Control Cohort: {control_cust_conversion:.2%}")
+print(f".....BC Cohort: {only_converted_purchases_bc.email.nunique()} of {big_bc_list.email.nunique()} for {bc_cust_conversion:.2%}")
+print(f".....Control Cohort: {only_converted_purchases_control.email.nunique()} of {big_control_list.email.nunique()} for {control_cust_conversion:.2%}")
 print(f"This created a {customer_lift:.2%} lift in conversion")
 
 # -----------------------------------------------------------------------
@@ -220,8 +220,10 @@ control_rev_per_email = control_totals.loc[control_totals.converted == 1].total.
 ) / len(control_totals.loc[control_totals.converted == 1])
 rev_lift = (bc_rev_per_email-control_rev_per_email)/control_rev_per_email
 
-print(f".....BC Cohort: ${bc_rev_per_email:.2f}")
-print(f".....Control Cohort: ${control_rev_per_email:.2f}")
+print(
+    f".....BC Cohort: {bc_totals.loc[bc_totals.converted == 1].total.sum()} of {len(bc_totals.loc[bc_totals.converted == 1])} for ${bc_rev_per_email:.2f}")
+print(f".....Control Cohort: {control_totals.loc[control_totals.converted == 1].total.sum(
+)} of {len(control_totals.loc[control_totals.converted == 1])} for ${control_rev_per_email: .2f}")
 print(f"This created a {rev_lift:.2%} lift in conversion")
 
 print(f"\nHowever, here are {bc_bad_totals} \
